@@ -3,10 +3,10 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Mapbox Storytelling</title>
+    <title>Best Of 2025 | The Daily Nexus</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/mapbox/assembly/publisher-staging/src/svgs/mapbox.svg">
+        href='./assets/nexus_logo.png'>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-globe-minimap@1.2.0/dist/bundle.js"></script>
@@ -15,7 +15,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
         }
 
         a,
@@ -77,19 +77,29 @@
             margin-left: 5vw;
         }
 
+        #Blenders{
+            width: 45vw;
+            margin-left: 50vw;
+        }
+
+        #intro{
+            /*change opening slide over here!*/
+            margin-top: 10vw;
+        }
+
         .righty {
             width: 33vw;
             margin-left: 62vw;
         }
 
         .fully {
-            width: 100%;
+            width: 45vw;
             margin: auto;
         }
 
         .light {
-            color: #444;
-            background-color: #fafafa;
+            color: #000000;
+            background-color: #FAF9F6;
         }
 
         .dark {
@@ -99,7 +109,6 @@
 
         .step {
             padding-bottom: 50vh;
-            /* margin-bottom: 10vh; */
             opacity: 0.25;
         }
 
@@ -115,6 +124,10 @@
 
         .step img {
             width: 100%;
+        }
+        .chapterText{
+            padding: 0.1px;
+            background-color: #FAF9F6;
         }
 
         @media (max-width: 750px) {
@@ -186,9 +199,13 @@
         var header = document.createElement('div');
 
         if (config.title) {
-            var titleText = document.createElement('h1');
-            titleText.innerText = config.title;
-            header.appendChild(titleText);
+            var titleImg = new Image();
+            titleImg.src = config.title;
+            titleImg.style.width = '8%';
+            titleImg.style.display = 'block';
+            titleImg.style.margin = '0 auto';
+            header.appendChild(titleImg);
+
         }
 
         if (config.subtitle) {
@@ -216,19 +233,34 @@
             if (record.title) {
                 var title = document.createElement('h3');
                 title.innerText = record.title;
+                title.classList.add('chapterText');
                 chapter.appendChild(title);
             }
 
             if (record.image) {
                 var image = new Image();
                 image.src = record.image;
+                image.classList.add('chapterText');
                 chapter.appendChild(image);
+            }
+
+            if (record.drawing) {
+                var drawing = new Image();
+                drawing.src = record.drawing;
+                drawing.style.position = 'absolute';
+                drawing.style.width = '450px';
+                drawing.style.marginLeft = '-700px';
+                chapter.appendChild(drawing);
             }
 
             if (record.description) {
                 var story = document.createElement('p');
                 story.innerHTML = record.description;
+                story.classList.add('chapterText');
                 chapter.appendChild(story);
+            
+
+            
             }
 
             container.setAttribute('id', record.id);
@@ -247,7 +279,7 @@
         });
 
         story.appendChild(features);
-
+        
         var footer = document.createElement('div');
 
         if (config.footer) {
