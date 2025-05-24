@@ -47,7 +47,79 @@ var config = {
                 //     opacity: 0
                 // }
             ]
-        }, 
+        },{
+            id: 'sams',
+            alignment: 'left',
+            hidden: false,
+            title: "Best Sandwich: Sam's to Go",
+            image: './assets/sams.JPG',
+            description: 'Known to be the perfect spot for a hangover cure, I.V. Bagel Cafe has got you covered with delicious bagel combinations from sweet cinnamon sugar to savory pesto cream cheese.',
+            location: {
+                center: [-119.8567, 34.41326],
+                zoom: 21,
+                pitch: 0,
+                bearing: 0,
+                // flyTo additional controls-
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                //speed: 2, // make the flying slow
+                //curve: 1, // change the speed at which it zooms out
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        }, {
+            id: 'devs',
+            alignment: 'right',
+            hidden: false,
+            title: "Best Spot for a First Date: Devereux Beach",
+            image: './assets/devs.jpg',
+            description: 'Known to be the perfect spot for a hangover cure, I.V. Bagel Cafe has got you covered with delicious bagel combinations from sweet cinnamon sugar to savory pesto cream cheese.',
+            location: {
+                center: [-119.87557, 34.40816],
+                zoom: 17.14,
+                pitch: 60,
+                bearing: 0,
+                // flyTo additional controls-
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                //speed: 2, // make the flying slow
+                //curve: 1, // change the speed at which it zooms out
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },{
+            id: 'devs_2',
+            alignment: 'right',
+            hidden: false,
+            title: "Best Smoke Spot: Devereux Beach",
+            image: './assets/devs.jpg',
+            description: 'Known to be the perfect spot for a hangover cure, I.V. Bagel Cafe has got you covered with delicious bagel combinations from sweet cinnamon sugar to savory pesto cream cheese.',
+            location: {
+                center: [-119.87557, 34.40816],
+                zoom: 17.14,
+                pitch: 60,
+                bearing: 0,
+                // flyTo additional controls-
+                // These options control the flight curve, making it move
+                // slowly and zoom out almost completely before starting
+                // to pan.
+                //speed: 2, // make the flying slow
+                //curve: 1, // change the speed at which it zooms out
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
         {
             id: 'Blenders',
             alignment: 'right',
@@ -105,11 +177,68 @@ var config = {
             onChapterExit: []
         },
         {
+            id: 'wingstop',
+            alignment: 'left',
+            hidden: false,
+            title: 'Best Food Deal: Wingstop',
+            image: './assets/geneva.jpg',
+            description: 'If you’re looking for the perfect after-swim snack, a welcoming dine-in space to eat with your friends or just a really good slice of pizza, then I.V. Pizza Pub is the place to be.',
+            location: {
+                center: [-119.85522, 34.41332],
+                zoom: 20.7,
+                pitch: 0,
+                bearing: 0.00
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+        {
+            id: 'ivdrip',
+            alignment: 'right',
+            hidden: false,
+            title: 'Best Sweet Treat: I.V. Drip',
+            image: './assets/geneva.jpg',
+            description: 'If you’re looking for the perfect after-swim snack, a welcoming dine-in space to eat with your friends or just a really good slice of pizza, then I.V. Pizza Pub is the place to be.',
+            location: {
+                center: [-119.85546, 34.41287],
+                zoom: 20.32,
+                pitch: 0,
+                bearing: 0.00
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+        {
+            id: 'caje',
+            alignment: 'left',
+            hidden: false,
+            title: 'Best Coffee: Caje',
+            image: './assets/geneva.jpg',
+            description: 'If you’re looking for the perfect after-swim snack, a welcoming dine-in space to eat with your friends or just a really good slice of pizza, then I.V. Pizza Pub is the place to be.',
+            location: {
+                center: [-119.85532, 34.41203],
+                zoom: 21,
+                pitch: 0,
+                bearing: 0.00
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+        {
             id: 'pizza-pub',
             alignment: 'right',
             hidden: false,
             title: 'I.V. Pizza Pub',
-            image: './assets/geneva.jpg',
+            image: './assets/pizzapub.jpg',
             description: 'If you’re looking for the perfect after-swim snack, a welcoming dine-in space to eat with your friends or just a really good slice of pizza, then I.V. Pizza Pub is the place to be.',
             location: {
                 center: [-119.85534, 34.41097],
@@ -143,10 +272,49 @@ var config = {
             onChapterExit: []
         },
         {
+            id: 'deli',
+            alignment: 'right',
+            hidden: false,
+            title: 'Best Drunchies: I.V. Deli Mart',
+            image: './assets/deli.JPG',
+            description: 'With protein choices ranging from chicken to birria to carne asada, Freebirds wraps these up in sizable portions along with vegetables, beans, guacamole and rice, among other additions.',
+            location: {
+                center: [-119.85615, 34.41292],
+                zoom: 19.52,
+                pitch: 0,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+        {
+            id: 'market',
+            alignment: 'left',
+            hidden: false,
+            title: 'Best Convenience Store: I.V. Market',
+            image: './assets/buenos-aires.jpg',
+            description: 'With protein choices ranging from chicken to birria to carne asada, Freebirds wraps these up in sizable portions along with vegetables, beans, guacamole and rice, among other additions.',
+            location: {
+                center: [-119.85752, 34.41227],
+                zoom: 19.88,
+                pitch: 0,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+        {
             id: 'library',
             alignment: 'right',
             hidden: false,
             title: 'Best Library Floor',
+            image: 'assets/lib.JPG',
             description: "What the second-floor library has in its shiny veneer and open concept, the fourth-floor, UCSB’s poster child, supplements in its hominess and authenticity.",
             location: {
                 center: [-119.84549, 34.41379],

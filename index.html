@@ -6,7 +6,7 @@
     <title>Best of 2025 | The Daily Nexus</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="icon" type="image/x-icon"
-        href='./assets/nexus_logo.png'>
+        href="assets/favicon.png">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://cdn.jsdelivr.net/npm/mapbox-gl-globe-minimap@1.2.0/dist/bundle.js"></script>
@@ -223,6 +223,7 @@
         if (header.innerText.length > 0) {
             header.classList.add(config.theme);
             header.setAttribute('id', 'header');
+            header.style.opacity = '80%';
             story.appendChild(header);
         }
 
@@ -249,7 +250,7 @@
                 drawing.src = record.drawing;
                 drawing.style.position = 'absolute';
                 drawing.style.width = '450px';
-                drawing.style.marginLeft = '-700px';
+                drawing.style.marginLeft = '-790px';
                 chapter.appendChild(drawing);
             }
 
