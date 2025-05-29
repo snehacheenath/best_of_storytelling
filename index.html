@@ -17,7 +17,19 @@
             padding: 0;
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
-
+        button{
+            font-family: Helvetica, sans-serif;
+            font-size: 15;
+            border-radius: 20px;
+            position: relative;
+            background-color: #FAF9F6;
+            top: -15px;
+            left: -57px;
+        }
+        h4{
+            font-weight: normal;
+            font-style: italic;
+        }
         a,
         a:hover,
         a:visited {
@@ -73,13 +85,8 @@
         }
 
         .lefty {
-            width: 33vw;
+            width: 37vw;
             margin-left: 5vw;
-        }
-
-        #Blenders{
-            width: 45vw;
-            margin-left: 50vw;
         }
 
         #intro{
@@ -88,8 +95,8 @@
         }
 
         .righty {
-            width: 33vw;
-            margin-left: 62vw;
+            width: 37vw;
+            margin-left: 58vw;
         }
 
         .fully {
@@ -113,13 +120,13 @@
         }
 
         .step.active {
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .step div {
             padding: 25px 50px;
             line-height: 25px;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         .step img {
@@ -146,6 +153,7 @@
         .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {
             touch-action: unset;
         }
+        
     </style>
 </head>
 
@@ -201,11 +209,13 @@
         if (config.title) {
             var titleImg = new Image();
             titleImg.src = config.title;
-            titleImg.style.width = '8%';
+            titleImg.style.width = '50%';
             titleImg.style.display = 'block';
             titleImg.style.margin = '0 auto';
+            titleImg.onclick = function() {
+                window.location.href = 'https://dailynexus.com/';
+            };
             header.appendChild(titleImg);
-
         }
 
         if (config.subtitle) {
@@ -235,6 +245,7 @@
                 var title = document.createElement('h3');
                 title.innerText = record.title;
                 title.classList.add('chapterText');
+                // title.style.marginBottom = '2%';
                 chapter.appendChild(title);
             }
 
@@ -245,12 +256,21 @@
                 chapter.appendChild(image);
             }
 
+            if (record.byline) {
+                var byline = document.createElement('h4');
+                byline.innerText = record.byline;
+                byline.classList.add('chapterText');
+                chapter.appendChild(byline);
+            }
+
             if (record.drawing) {
                 var drawing = new Image();
                 drawing.src = record.drawing;
                 drawing.style.position = 'absolute';
+                if (record.alignment == 'right'){
+                    drawing.style.marginLeft = '-790px';
+                }
                 drawing.style.width = '450px';
-                drawing.style.marginLeft = '-790px';
                 chapter.appendChild(drawing);
             }
 
@@ -259,9 +279,38 @@
                 story.innerHTML = record.description;
                 story.classList.add('chapterText');
                 chapter.appendChild(story);
-            
+            }
+            if (record.more) {
+                // Create a container for the button and modal
+                const container = document.createElement('div');
+                container.classList.add('chapterText');
 
-            
+                // Create the button itself
+                const btn = document.createElement('button');
+                btn.textContent = 'CLICK TO READ MORE';
+
+                // Append button to container, and container to chapter
+                container.appendChild(btn);
+                chapter.appendChild(container);
+
+                // Attach event listener
+                let counter = 0;
+                btn.addEventListener("click", () => {
+                    counter ++;
+                    if (counter % 2 !== 0) {
+                        btn.innerHTML = "COLLAPSE";
+                        var story = document.createElement('p');
+                        story.id = "expanded"
+                        story.innerHTML = record.more;
+                        story.classList.add('chapterText');
+                        chapter.appendChild(story);
+                    }
+                    else{
+                        btn.innerHTML = "CLICK TO READ MORE";
+                        const to_remove = document.getElementById("expanded");
+                        to_remove.remove();
+                    }
+                });
             }
 
             container.setAttribute('id', record.id);
