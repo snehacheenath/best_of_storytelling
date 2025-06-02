@@ -17,15 +17,6 @@
             padding: 0;
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
-        button{
-            font-family: Helvetica, sans-serif;
-            font-size: 15;
-            border-radius: 20px;
-            position: relative;
-            background-color: #FAF9F6;
-            top: -15px;
-            left: -57px;
-        }
         h4{
             font-weight: normal;
             font-style: italic;
@@ -69,6 +60,10 @@
             position: relative;
             z-index: 5;
         }
+        .expandedText {
+            margin: 0.5em 0;
+            /* or whatever spacing you want */
+        }
 
         #features {
             padding-top: 10vh;
@@ -106,12 +101,7 @@
 
         .light {
             color: #000000;
-            background-color: #FAF9F6;
-        }
-
-        .dark {
-            color: #fafafa;
-            background-color: #444;
+            background-color: #f9e5c7;
         }
 
         .step {
@@ -134,7 +124,7 @@
         }
         .chapterText{
             padding: 0.1px;
-            background-color: #FAF9F6;
+            background-color: #f9e5c7;
         }
 
         @media (max-width: 750px) {
@@ -152,6 +142,15 @@
         .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan,
         .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {
             touch-action: unset;
+        }
+        button{
+            font-family: Helvetica, sans-serif;
+            font-size: 10;
+            border-radius: 20px;
+            position: relative;
+            background-color: #f9e5c7;
+            top: -15px;
+            left: -57px;
         }
         
     </style>
@@ -248,21 +247,6 @@
                 // title.style.marginBottom = '2%';
                 chapter.appendChild(title);
             }
-
-            if (record.image) {
-                var image = new Image();
-                image.src = record.image;
-                image.classList.add('chapterText');
-                chapter.appendChild(image);
-            }
-
-            if (record.byline) {
-                var byline = document.createElement('h4');
-                byline.innerText = record.byline;
-                byline.classList.add('chapterText');
-                chapter.appendChild(byline);
-            }
-
             if (record.drawing) {
                 var drawing = new Image();
                 drawing.src = record.drawing;
@@ -270,8 +254,27 @@
                 if (record.alignment == 'right'){
                     drawing.style.marginLeft = '-790px';
                 }
+                if (record.alignment == 'left'){
+                    drawing.style.marginLeft = '860px';
+                }
                 drawing.style.width = '450px';
                 chapter.appendChild(drawing);
+            }
+            if (record.image) {
+                var image = new Image();
+                image.src = record.image;
+                image.classList.add('chapterText');
+                chapter.appendChild(image);
+            }
+
+            
+
+
+            if (record.byline) {
+                var byline = document.createElement('h4');
+                byline.innerText = record.byline;
+                byline.classList.add('chapterText');
+                chapter.appendChild(byline);
             }
 
             if (record.description) {
@@ -285,33 +288,37 @@
                 const container = document.createElement('div');
                 container.classList.add('chapterText');
 
-                // Create the button itself
+                // Create the button
                 const btn = document.createElement('button');
                 btn.textContent = 'CLICK TO READ MORE';
 
-                // Append button to container, and container to chapter
+                // Generate a unique ID based on record.id
+                const expandedId = `expanded-${record.id}`;
+
+                // Append button to container and container to chapter
                 container.appendChild(btn);
                 chapter.appendChild(container);
 
-                // Attach event listener
                 let counter = 0;
                 btn.addEventListener("click", () => {
-                    counter ++;
+                    counter++;
                     if (counter % 2 !== 0) {
-                        btn.innerHTML = "COLLAPSE";
-                        var story = document.createElement('p');
-                        story.id = "expanded"
-                        story.innerHTML = record.more;
-                        story.classList.add('chapterText');
-                        chapter.appendChild(story);
-                    }
-                    else{
-                        btn.innerHTML = "CLICK TO READ MORE";
-                        const to_remove = document.getElementById("expanded");
-                        to_remove.remove();
+                        btn.textContent = "COLLAPSE";
+                        if (!document.getElementById(expandedId)) {
+                            const story = document.createElement('p');
+                            story.id = expandedId;
+                            story.innerHTML = record.more;
+                            story.classList.add('chapterText');
+                            chapter.appendChild(story);
+                        }
+                    } else {
+                        btn.textContent = "CLICK TO READ MORE";
+                        const to_remove = document.getElementById(expandedId);
+                        if (to_remove) to_remove.remove();
                     }
                 });
             }
+            
 
             container.setAttribute('id', record.id);
             container.classList.add('step');
